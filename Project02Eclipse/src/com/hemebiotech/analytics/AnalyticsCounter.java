@@ -1,7 +1,6 @@
 package com.hemebiotech.analytics;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -20,7 +19,7 @@ public class AnalyticsCounter {
 		}
 		catch (FileNotFoundException fe){
 			System.out.println("File not found");
-		}
+
 
 		/*
 			on créé une liste avec tous les effets secondaires
@@ -30,10 +29,10 @@ public class AnalyticsCounter {
 		List<String> symptoms = readSymptoms.GetSymptoms();
 
 		/*
-			on compte les occurences par symptome grâce à une HashMap
+			on compte les occurences par symptom et on trie par ordre alphabétique grâce à une TreeMap
 		 */
 
-		Map<String, Integer> symptomsCountMap = new HashMap<>();
+		TreeMap<String, Integer> symptomsCountMap = new TreeMap<>();
 
 		for (String symptom:symptoms
 			 ) {
@@ -44,19 +43,22 @@ public class AnalyticsCounter {
 		}
 
 		/*
-			on trie les données par ordre alphabétique grâce à TreeMap
+			affiche le contenu de la map dans la console
 		 */
-
-		TreeMap<String, Integer> sortedMap = new TreeMap<>(symptomsCountMap);
-
-		System.out.println(sortedMap);
+		System.out.println(symptomsCountMap);
 		
 		// next generate output
-		File outFile = new File("C:/Users/hdb20/Documents/Workspace/Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/result.out");
-		BufferedWriter bf;
-		}
+		/*Try (FileWriter writer = new FileWriter("C:/Users/hdb20/Documents/Workspace/Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/result.out", true);
+			BufferedWriter bw = new BufferedWriter(writer)) {
 
-	}
+			bw.write(String.valueOf(symptomsCountMap));
+
+		}
+		catch (IOException) {
+			System.err.format("erreur");
+		}*/
+
+
+	};
 
 	// try catch pour les exceptions + sortir les résultats en colonne + BufferedWriter pour écrire dans le fichier
-
