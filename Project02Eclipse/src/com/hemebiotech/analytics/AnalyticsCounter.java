@@ -2,6 +2,7 @@ package com.hemebiotech.analytics;
 
 import java.io.*;
 import java.util.List;
+import java.util.TreeMap;
 
 public class AnalyticsCounter {
 
@@ -10,13 +11,11 @@ public class AnalyticsCounter {
 
 		/* on lit le fichier qui liste les effets secondaires recensés */
 
-		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\hdb20\\Documents\\Workspace\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt"));
-		String line = reader.readLine();
-
 		ReadSymptomDataFromFile readSymptoms = new ReadSymptomDataFromFile("C:\\Users\\hdb20\\Documents\\Workspace\\Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application\\Project02Eclipse\\symptoms.txt");
 		List<String> symptoms = readSymptoms.GetSymptoms();
 
-		SymptomsProcess symptomsProcess = new SymptomsProcess(symptoms);
-
+		SymptomsProcess symptomsList = new SymptomsProcess();
+		TreeMap<String, Integer> symptomsCount = symptomsList.count(symptoms);
+		symptomsList.WriteResult(symptomsCount);
 	}
 }
