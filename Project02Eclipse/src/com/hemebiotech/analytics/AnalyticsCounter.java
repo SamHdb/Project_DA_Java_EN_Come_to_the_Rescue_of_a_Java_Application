@@ -1,12 +1,11 @@
 package com.hemebiotech.analytics;
 
-import java.io.*;
 import java.util.List;
 import java.util.TreeMap;
 
 public class AnalyticsCounter {
 
-	public static void main(String[] args) throws Exception {
+	public static void main(String[] args){
 		// first get input
 
 		/* on lit le fichier qui liste les effets secondaires recensés */

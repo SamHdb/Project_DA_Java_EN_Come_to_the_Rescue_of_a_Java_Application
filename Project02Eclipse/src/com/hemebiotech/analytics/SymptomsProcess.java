@@ -25,14 +25,14 @@ public class SymptomsProcess {
     // next generate output
     public void WriteResult(TreeMap<String, Integer> symptomsCountAndSorted) {
 
-        try (
+        try {
                 FileWriter writer = new FileWriter("C:/Users/hdb20/Documents/Workspace/Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/result.out", true);
-                BufferedWriter bw = new BufferedWriter(writer)) {
+                BufferedWriter bw = new BufferedWriter(writer);
                 bw.write(String.valueOf(symptomsCountAndSorted));
                 bw.newLine();
         } catch (
                 IOException oe) {
-                System.err.format("erreur");
+                System.err.format("Erreur lors de l'écriture du fichier");
         }
     }
 }
