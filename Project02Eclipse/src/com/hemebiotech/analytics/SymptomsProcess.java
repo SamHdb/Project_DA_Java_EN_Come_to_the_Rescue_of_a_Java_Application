@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 public class SymptomsProcess {
@@ -23,16 +24,21 @@ public class SymptomsProcess {
     }
 
     // next generate output
-    public void WriteResult(TreeMap<String, Integer> symptomsCountAndSorted) {
+    public void writeResult(TreeMap<String, Integer> symptomsCountAndSorted) {
 
         try {
-                FileWriter writer = new FileWriter("C:/Users/hdb20/Documents/Workspace/Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/result.out", true);
-                BufferedWriter bw = new BufferedWriter(writer);
-                bw.write(String.valueOf(symptomsCountAndSorted));
+            FileWriter writer = new FileWriter("C:/Users/hdb20/Documents/Workspace/Project_DA_Java_EN_Come_to_the_Rescue_of_a_Java_Application/result.out", true);
+            BufferedWriter bw = new BufferedWriter(writer);
+            for (Map.Entry<String, Integer> entry : symptomsCountAndSorted.entrySet()) {
+                String key = entry.getKey();
+                Integer value = entry.getValue();
+
+                bw.write(key + " => " + value);
                 bw.newLine();
-        } catch (
-                IOException oe) {
-                System.err.format("Erreur lors de l'écriture du fichier");
+            }
+            bw.close();
+        } catch (IOException oe) {
+            System.err.format("Erreur lors de l'écriture du fichier");
         }
     }
 }
